@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
 
 
 @custom-variant dark (&:is(.dark *));
@@ -122,7 +121,7 @@
    background-attachment: fixed;
  }
 
-.nothings-you-could-do {
+.nothing-you-could-do-regular {
   font-family: "Nothing You Could Do", cursive;
   font-weight: 400;
   font-style: normal;
