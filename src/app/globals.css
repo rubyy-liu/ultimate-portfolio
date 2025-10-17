@@ -121,6 +121,14 @@
    background-attachment: fixed;
  }
 
+.grid-background-bw {
+  background-image: url('/b+w.jpg');
+   background-repeat: repeat;
+   background-position: center;
+   background-size: 256px 256px; 
+   background-attachment: fixed;
+ }
+
 .nothing-you-could-do-regular {
   font-family: "Nothing You Could Do", cursive;
   font-weight: 400;

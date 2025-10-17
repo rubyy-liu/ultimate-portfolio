@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 export default function LandingPage() {
   const router = useRouter();
-  // wait 1s before navigating to /home
-  const navigateHomeAfterDelay = () => setTimeout(() => router.push("/home"), 400);
+  // helper: wait 400ms then navigate to given path
+  const navigateAfterDelay = (path: string) => setTimeout(() => router.push(path), 400);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const rubyRef = useRef<HTMLDivElement | null>(null);
@@ -88,8 +88,9 @@ export default function LandingPage() {
           const intersectionArea = isIntersecting(rubyRect, draggedRect);
           const rubyArea = rubyRect.width * rubyRect.height;
           if (rubyArea > 0 && intersectionArea / rubyArea > 0.2) {
-            // delayed navigation
-            navigateHomeAfterDelay();
+            // navigate based on which image was dropped over ruby
+            if (id === "artist") navigateAfterDelay("/art-home");
+            else if (id === "software") navigateAfterDelay("/cv-home");
           }
         }
       }
@@ -171,7 +172,11 @@ export default function LandingPage() {
   }
 
   // click handler to move an item over the ruby
-  function moveOverRuby(refEl: React.RefObject<HTMLElement | null>, setPos: (p: { x: number; y: number }) => void) {
+  function moveOverRuby(
+    refEl: React.RefObject<HTMLElement | null>,
+    setPos: (p: { x: number; y: number }) => void,
+    targetPath: string
+  ) {
     if (!containerRef.current || !rubyRef.current || !refEl.current) return;
     if (draggingRef.current) return; // ignore while dragging
 
@@ -196,8 +201,8 @@ export default function LandingPage() {
       const intersectionArea = ix * iy;
       const rubyArea = rubyRect.width * rubyRect.height;
       if (rubyArea > 0 && intersectionArea / rubyArea > 0.2) {
-        // delayed navigation
-        navigateHomeAfterDelay();
+        // navigate to the provided target path
+        navigateAfterDelay(targetPath);
       }
     }, 360);
   }
@@ -235,7 +240,7 @@ export default function LandingPage() {
               ref={artistElRef}
               draggable={false}
               onPointerDown={(e) => startDrag(e, "artist", artistPos, setArtistPos)}
-              onClick={() => moveOverRuby(artistElRef, setArtistPos)}
+              onClick={() => moveOverRuby(artistElRef, setArtistPos, "/art-home")}
               className="absolute w-96 cursor-grab active:cursor-grabbing select-none flex flex-col items-center"
               style={{
                 transform: `translate3d(${artistPos.x}px, ${artistPos.y}px, 0)`,
@@ -252,7 +257,7 @@ export default function LandingPage() {
               ref={softwareElRef}
               draggable={false}
               onPointerDown={(e) => startDrag(e, "software", softwarePos, setSoftwarePos)}
-              onClick={() => moveOverRuby(softwareElRef, setSoftwarePos)}
+              onClick={() => moveOverRuby(softwareElRef, setSoftwarePos, "/cv-home")}
               className="absolute w-96 cursor-grab active:cursor-grabbing select-none flex flex-col items-center mt-12"
               style={{
                 transform: `translate3d(${softwarePos.x}px, ${softwarePos.y}px, 0)`,
