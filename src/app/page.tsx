@@ -8,10 +8,10 @@ export default function LandingPage() {
   // helper: wait 400ms then navigate to given path
   const navigateAfterDelay = (path: string) => setTimeout(() => router.push(path), 400);
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const rubyRef = useRef<HTMLDivElement | null>(null);
-  const artistElRef = useRef<HTMLElement | null>(null);
-  const softwareElRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rubyRef = useRef<HTMLDivElement>(null);
+  const artistElRef = useRef<HTMLDivElement | null>(null);
+  const softwareElRef = useRef<HTMLDivElement | null>(null);
 
   const draggingRef = useRef<{
     id: "artist" | "software" | null;
@@ -22,7 +22,7 @@ export default function LandingPage() {
     imgH: number;
     currentX: number;
     currentY: number;
-    el?: HTMLElement | null;
+    el?: HTMLDivElement | null;
     rAF?: number | null;
   } | null>(null);
 
@@ -114,7 +114,7 @@ export default function LandingPage() {
     pos: { x: number; y: number },
     setPos: React.Dispatch<React.SetStateAction<{ x: number; y: number }>>
   ) {
-    const el = e.currentTarget as HTMLElement;
+    const el = e.currentTarget as HTMLDivElement;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const imgW = el.offsetWidth;
@@ -144,7 +144,7 @@ export default function LandingPage() {
   }
 
   // animate an element to target transform and persist final state
-  function animateTo(el: HTMLElement, targetX: number, targetY: number, setPos: (p: { x: number; y: number }) => void) {
+  function animateTo(el: HTMLDivElement, targetX: number, targetY: number, setPos: (p: { x: number; y: number }) => void) {
     console.log(`Animating to: ${targetX}, ${targetY}`);
     if (!el) return;
     // if currently dragging, ignore
@@ -173,7 +173,7 @@ export default function LandingPage() {
 
   // click handler to move an item over the ruby
   function moveOverRuby(
-    refEl: React.RefObject<HTMLElement | null>,
+    refEl: React.RefObject<HTMLDivElement | null>,
     setPos: (p: { x: number; y: number }) => void,
     targetPath: string
   ) {

@@ -27,8 +27,8 @@ export default function OutfitCanvas({
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const rubyRef = useRef<HTMLDivElement | null>(null);
-  const artistElRef = useRef<HTMLElement | null>(null);
-  const softwareElRef = useRef<HTMLElement | null>(null);
+  const artistElRef = useRef<HTMLDivElement | null>(null);
+  const softwareElRef = useRef<HTMLDivElement | null>(null);
 
   const draggingRef = useRef<{
     id: "artist" | "software" | null;
@@ -39,7 +39,7 @@ export default function OutfitCanvas({
     imgH: number;
     currentX: number;
     currentY: number;
-    el?: HTMLElement | null;
+    el?: HTMLDivElement | null;
     rAF?: number | null;
   } | null>(null);
 
@@ -125,7 +125,7 @@ export default function OutfitCanvas({
     pos: Pos,
     setPos: React.Dispatch<React.SetStateAction<Pos>>
   ) {
-    const el = e.currentTarget as HTMLElement;
+    const el = e.currentTarget as HTMLDivElement;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const imgW = el.offsetWidth;
@@ -152,7 +152,7 @@ export default function OutfitCanvas({
     el.setPointerCapture(e.pointerId);
   }
 
-  function animateTo(el: HTMLElement, targetX: number, targetY: number, setPos: (p: Pos) => void) {
+  function animateTo(el: HTMLDivElement, targetX: number, targetY: number, setPos: (p: Pos) => void) {
     if (!el) return;
     if (draggingRef.current) return;
     el.style.willChange = "transform";
@@ -170,7 +170,7 @@ export default function OutfitCanvas({
     }, 400);
   }
 
-  function moveOverRuby(refEl: React.RefObject<HTMLElement | null>, setPos: (p: Pos) => void, targetPath: string) {
+  function moveOverRuby(refEl: React.RefObject<HTMLDivElement | null>, setPos: (p: Pos) => void, targetPath: string) {
     if (!containerRef.current || !rubyRef.current || !refEl.current) return;
     if (draggingRef.current) return;
 
