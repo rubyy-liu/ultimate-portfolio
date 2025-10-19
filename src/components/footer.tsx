@@ -12,24 +12,15 @@ type FooterProps = {
     links?: LinkItem[];
 };
 
-/**
- * Simple, accessible footer component.
- * - Shows current year and owner name
- * - Renders a small set of nav links (use `links` prop to customize)
- *
- * Usage:
- * <Footer owner="Your Name" />
- */
 const Footer: React.FC<FooterProps> = ({
     className = "",
     owner = "Ruby",
     links,
 }) => {
     const year = new Date().getFullYear();
-
     const defaultLinks: LinkItem[] = [
-        { label: "Home", href: "/home" },
-        { label: "Contact", href: "/contact" },
+        { label: "Home", href: "/" },
+        { label: "Contact", href: "/cv-contact" },
         { label: "GitHub", href: "https://github.com/rubyy-liu", external: true },
         { label: "LinkedIn", href: "https://www.linkedin.com/in/rubyyliu", external: true },
     ];

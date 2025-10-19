@@ -18,6 +18,7 @@ export default function NavClient() {
   const artLinks = [
     { href: "/art-gallery", label: "Gallery" },
     { href: "/art-contact", label: "Contact" },
+    { href: "/art-about", label: "About" },
     { href: "/art-new-outfit", label: "New Outfit" },
   ];
 
@@ -37,7 +38,7 @@ const headerClass =
     mode === "cv"
         ? "text-slate-900"
         : mode === "art"
-        ? "bg-[#2C2C2C] border-b border-slate-800 text-white"
+        ? "bg-[#2C2C2C] text-white"
         : "bg-transparent";
 
   const linkClass = (isActive: boolean) => {
