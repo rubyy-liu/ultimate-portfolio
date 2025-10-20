@@ -49,7 +49,7 @@ export default function Home() {
         >
           <div>
             <h3 className="inline-block border border-[#C3B1A4] text-[#C3B1A4] rounded-full px-4 py-1 text-2xl font-semibold hover:bg-[#C3B1A4] hover:text-[#2C2C2C]">About</h3>
-            <p className="mt-2 text-lg max-w-xs text-[#C3B1A4]">
+            <p className="mt-2 text-lg max-w-xs text-slate-300">
               Ruby Liu is an emerging artist who works in resin, mono printing and charcoal. Using expressive mark-making and layered resin textures, she captures the movement and depth of human feeling. Aiming to translate inner experiences into a visual language of gesture and texture.
             </p>
           </div>

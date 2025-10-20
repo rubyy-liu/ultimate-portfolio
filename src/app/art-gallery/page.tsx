@@ -19,6 +19,8 @@ export default function Gallery() {
     { src: "scream.png", category: "mixed" },
     { src: "IMG_9425.JPG", category: "drawing" },
     { src: "art1.png", category: "prints" },
+    { src: "hands.jpeg", category: "drawing" },
+    { src: "handres.jpeg", category: "mixed" },
   ];
 
   const [filter, setFilter] = useState<"all" | Item["category"]>("all");
@@ -40,8 +42,8 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-4">
         <header className="mb-6 flex items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-semibold text-white">Gallery</h1>
-            <p className="mt-1 text-sm text-gray-300">Filter by medium</p>
+            <h1 className="text-3xl font-semibold text-[#FAE9DD]">Gallery</h1>
+            <p className="mt-1 text-sm text-slate-300">Filter by medium</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -53,7 +55,7 @@ export default function Gallery() {
                   onClick={() => setFilter(f.key)}
                   className={`text-sm font-medium px-3 py-1 rounded-full transition ${
                     active
-                      ? "bg-white/10 text-white ring-1 ring-white/20"
+                      ? "bg-white/10 text-[#FAE9DD] ring-1 ring-white/20"
                       : "text-slate-300 hover:bg-white/5"
                   }`}
                   aria-pressed={active}
