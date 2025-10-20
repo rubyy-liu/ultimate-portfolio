@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
@@ -12,6 +12,25 @@ export default function Home() {
       router.push(path);
     }
   };
+
+  // fade the scroll indicator as the user scrolls
+  const [indicatorOpacity, setIndicatorOpacity] = useState(1);
+  useEffect(() => {
+    let ticking = false;
+    const maxFade = 220; // px scrolled to fully hide
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        const o = Math.max(0, 1 - y / maxFade);
+        setIndicatorOpacity(o);
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <main className="bg-[#2C2C2C] flex items-center justify-center flex-col pb-8">
@@ -89,6 +108,20 @@ export default function Home() {
           <div className="relative h-full p-6 flex items-start bg-black/30">
             <h3 className="inline-block text-[#2C2C2C] px-4 py-1 rounded-full text-xl font-semibold border border-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#C3B1A4]">Contact</h3>
           </div>
+        </div>
+      </div>
+
+      {/* scroll indicator: bottom center, fades as user scrolls */}
+      <div
+        aria-hidden="true"
+        className="fixed left-1/2 transform -translate-x-1/2 bottom-6 z-10 pointer-events-none"
+        style={{ opacity: indicatorOpacity, transition: "opacity 150ms linear" }}
+      >
+        <div className="flex flex-col items-center">
+          <svg className="w-8 h-8 text-[#2C2C2C] animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14" />
+            <path d="M19 12l-7 7-7-7" />
+          </svg>
         </div>
       </div>
     </main>
