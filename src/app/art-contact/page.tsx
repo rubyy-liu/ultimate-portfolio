@@ -39,7 +39,7 @@ export default function Contact() {
         {/* Contact form */}
         <div className="bg-white/6 p-8 rounded-2xl border border-white/8">
           <h2 className="text-3xl font-semibold text-[#FAE9DD] mb-2">Send me a message</h2>
-          <p className="text-sm text-slate-300 mb-6">I'd love to hear from you!</p>
+          <p className="text-sm text-slate-300 mb-6">I&apos;d love to hear from you!</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <label className="block">

@@ -16,10 +16,10 @@ export default function About() {
 
         {/* right: bio, skills, contact */}
         <div className="text-white">
-          <h1 className="text-4xl font-semibold mb-4 text-[#FAE9DD]">Hi, it's Ruby - again</h1>
+          <h1 className="text-4xl font-semibold mb-4 text-[#FAE9DD]">Hi, it&apos;s Ruby - again</h1>
           <h2 className="text-2xl font-medium mb-4 text-[#FAE9DD]">A little bit more about me</h2>
           <p className="text-lg text-slate-300 mb-6">
-            I’m a multidisciplinary artist and software developer with a passion for both traditional art and digital design.
+            Im a multidisciplinary artist and software developer with a passion for both traditional art and digital design.
             I work across many mediums as I love experimenting with texture, layering, and mark-making.
           </p>
 

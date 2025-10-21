@@ -212,7 +212,7 @@ export default function LandingPage() {
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');`}</style>
       <main className="grid-background h-[100vh] flex items-center justify-center flex-col">
         <div className="text-center">
-          <h2 className="nothing-you-could-do-regular text-4xl mb-1">Hi I'm Ruby</h2>
+          <h2 className="nothing-you-could-do-regular text-4xl mb-1">Hi I&apos;m Ruby</h2>
           <h2 className="nothing-you-could-do-regular text-4xl mb-1">Could you please complete my outfit</h2>
 
           {/* container holds the ruby image and the draggable overlays */}
