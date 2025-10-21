@@ -32,8 +32,9 @@ export default function ContactPage() {
       setEmail("");
       setMessage("");
       setTimeout(() => setSent(false), 3000);
-    } catch (err: any) {
-      setError(err?.message || "Unable to send message");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      setError(message || "Unable to send message");
     } finally {
       setLoading(false);
     }
