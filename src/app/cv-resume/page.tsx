@@ -123,7 +123,7 @@ export default function Page() {
     <main className="grid-background min-h-screen py-12 px-6">
       <div className="max-w-5xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-9xl md:text-5xl font-bold text-[#2C2C2C] nothing-you-could-do-regular">Curriculum Vitae</h1>
+          <h1 className="text-9xl md:text-5xl font-bold text-[#2C2C2C] nothing-you-could-do-regular">Resume</h1>
           <p className="mt-2 text-sm text-[#2C2C2C] opacity-90">
             Selected education, work experience, projects and technical skills.
           </p>
