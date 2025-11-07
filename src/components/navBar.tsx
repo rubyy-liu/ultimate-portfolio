@@ -36,6 +36,21 @@ export default function NavClient() {
 
   const links = mode === "cv" ? cvLinks : mode === "art" ? artLinks : defaultLinks;
 
+  // mobile menu: remove "new outfit" entries and add cross-link to the other section
+  const mobileLinks = (() => {
+    // remove outfit-change links from mobile menu
+    const base = links.filter((l) => !l.href.includes("new-outfit"));
+    if (mode === "cv") {
+      // when viewing CV pages, include a quick link to the Art home (placed last)
+      return [...base, { href: "/art-home", label: "Art Home" }];
+    }
+    if (mode === "art") {
+      // when viewing Art pages, include a quick link to the CV home (placed last)
+      return [...base, { href: "/cv-home", label: "CV Home" }];
+    }
+    return base;
+  })();
+
   const headerClass =
     mode === "cv"
       ? "text-slate-900"
@@ -135,7 +150,7 @@ export default function NavClient() {
       >
         <div className={`max-w-6xl mx-auto px-4 py-3 ${mode === "art" ? "bg-[#2C2C2C]" : "bg-white/95"}`}>
           <div className="flex flex-col gap-2">
-            {links.map((link) => {
+            {mobileLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link

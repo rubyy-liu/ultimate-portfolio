@@ -14,6 +14,8 @@ export default function OutfitCanvas({
   softwareTarget = "/cv-home",
   containerSize = { width: 1160, height: 740 },
   rubySize = { width: 520, height: 740 },
+  artistSub,
+  softwareSub,
 }: {
   titleTop: string;
   titleBottom?: string;
@@ -23,6 +25,8 @@ export default function OutfitCanvas({
   softwareTarget?: string;
   containerSize?: { width: number; height: number };
   rubySize?: { width: number; height: number };
+  artistSub?: string;
+  softwareSub?: string;
 }) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -181,7 +185,11 @@ export default function OutfitCanvas({
     const imgH = el.offsetHeight;
 
     const targetX = (rubyRect.left - containerRect.left) + (rubyRect.width - imgW) / 2;
-    const targetY = (rubyRect.top - containerRect.top) + (rubyRect.height - imgH) / 2;
+    // lower target position by 75px if there is a subheading
+    let targetY = (rubyRect.top - containerRect.top) + (rubyRect.height - imgH) / 2;
+    if (artistSub || softwareSub) {
+      targetY += 75;
+    }
 
     animateTo(el, targetX, targetY, setPos);
 
@@ -226,6 +234,13 @@ export default function OutfitCanvas({
           style={{ transform: `translate3d(${artistPos.x}px, ${artistPos.y}px, 0)`, touchAction: "none" }}
         >
           <img src="/Artist.png" alt="Artist" className="w-full h-auto pointer-events-none" />
+          {/* optional subheading under Artist */}
+          {artistSub && (
+            <>
+              <h2 className="nothing-you-could-do-regular text-4xl mt-21">{artistSub}</h2>
+              <p className="nothing-you-could-do-regular mt-2 text-xl">(Click me)</p>
+            </>
+          )}
         </div>
 
         <div
@@ -237,6 +252,13 @@ export default function OutfitCanvas({
           style={{ transform: `translate3d(${softwarePos.x}px, ${softwarePos.y}px, 0)`, touchAction: "none" }}
         >
           <img src="/Software.png" alt="Software" className="w-full h-auto pointer-events-none" />
+          {/* optional subheading under Software */}
+          {softwareSub && (
+            <>
+              <h2 className="nothing-you-could-do-regular text-4xl mt-31">{softwareSub}</h2>
+              <p className="nothing-you-could-do-regular mt-2 text-xl">(or drag me)</p>
+            </>
+          )}
         </div>
       </div>
     </div>
