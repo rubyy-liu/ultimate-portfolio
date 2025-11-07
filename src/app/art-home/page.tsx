@@ -69,27 +69,26 @@ export default function Home() {
         {/* reflected overlay that scales the same way (mirrored and faded) */}
         <div
           aria-hidden="true"
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none blur-[2px] md:blur-[5px]"
           style={{
             right: "10%",
             top: "70%",
             transform: "translateY(-50%) scaleY(-1) scaleX(-1)",
             maxWidth: "30%",
             opacity: 0.45,
-            filter: "blur(5px)",
           }}
         >
           <h1
-        className="font-semibold leading-tight"
-        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+            className="font-semibold leading-tight"
+            style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
           >
-        RUBY
+            RUBY
           </h1>
           <h1
-        className="font-semibold leading-tight"
-        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+            className="font-semibold leading-tight"
+            style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
           >
-        LIU
+            LIU
           </h1>
         </div>
       </div>
