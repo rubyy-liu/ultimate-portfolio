@@ -33,7 +33,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="bg-[#2C2C2C] flex items-center justify-center py-12">
+    <main className="bg-[#2C2C2C] flex items-center justify-center py-2 md:py-12 px-4 md:px-0">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
         {/* Contact form */}
@@ -93,15 +93,15 @@ export default function Contact() {
           </form>
         </div>
         
-        {/* Large image of Ruby */}
-        <div className="overflow-hidden w-full flex justify-center">
+        {/* Large image of Ruby (hidden on small screens) */}
+        <div className="hidden md:flex overflow-hidden w-full justify-center">
           {/* reduced height and zoomed image */}
-            <img
-              src="/Art-Ruby.png"
-              alt="Ruby"
-              className="w-auto h-150 object-cover filter saturate-50 contrast-130"
-              draggable={false}
-            />
+          <img
+            src="/Art-Ruby.png"
+            alt="Ruby"
+            className="w-auto h-150 object-cover filter saturate-50 contrast-130"
+            draggable={false}
+          />
         </div>
       </div>
     </main>

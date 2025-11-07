@@ -185,10 +185,10 @@ export default function OutfitCanvas({
     const imgH = el.offsetHeight;
 
     const targetX = (rubyRect.left - containerRect.left) + (rubyRect.width - imgW) / 2;
-    // lower target position by 75px if there is a subheading
+    // lower target position by 75px if artistSub or softwareSub exists
     let targetY = (rubyRect.top - containerRect.top) + (rubyRect.height - imgH) / 2;
     if (artistSub || softwareSub) {
-      targetY += 75;
+      targetY += 85;
     }
 
     animateTo(el, targetX, targetY, setPos);

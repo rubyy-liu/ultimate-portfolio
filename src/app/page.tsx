@@ -47,7 +47,7 @@ export default function LandingPage() {
             <button
               onClick={() => router.push("/cv-home")}
               aria-label="Go to CV Home"
-              className="w-full sm:w-auto px-6 py-3 rounded-full border border-[#A6E1FF] bg-white text-[#2C2C2C] font-medium hover:opacity-90 transition"
+              className="w-full sm:w-auto px-6 py-3 rounded-full border border-[#A6E1FF] bg-white text-[#2C2C2C] font-medium hover:opacity-90 transition shadow-lg"
             >
               Software - View CV
             </button>

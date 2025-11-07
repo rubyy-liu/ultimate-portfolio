@@ -4,11 +4,11 @@ export default function About() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* left: portrait / featured image */}
         <div className="flex items-center justify-center">
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-[160px] sm:max-w-[260px] md:max-w-md">
             <img
               src="/comRuby.png"
               alt="Ruby"
-              className="w-full h-auto object-cover filter saturate-50 contrast-130"
+              className="w-full h-auto object-cover filter saturate-50 contrast-125 rounded-md"
               draggable={false}
             />
           </div>

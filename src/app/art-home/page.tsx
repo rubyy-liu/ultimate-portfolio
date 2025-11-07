@@ -38,26 +38,64 @@ export default function Home() {
         <img
           src="/main.jpg"
           alt="Art Home Background"
-          className="max-h-[90vh] w-[97vw] rounded-2xl object-cover shadow-lg block art-image"
+          className="max-h-[90vh] w-[97vw] rounded-2xl object-cover shadow-lg block"
         />
 
-        {/* overlay title on the right side */}
-        <div className="absolute right-100 top-1/4 -translate-y-1/2 max-w-xs p-4">
-          <h1 className="text-8xl font-semibold leading-tight">RUBY</h1>
-          <h1 className="text-8xl font-semibold leading-tight">LIU</h1>
+        {/* overlay title on the right side - sizes use clamp so they scale with the image/container */}
+        <div
+          aria-hidden="true"
+          className="absolute pointer-events-none"
+          style={{
+        right: "20%",
+        top: "30%",
+        transform: "translateY(-50%)",
+        maxWidth: "30%",
+          }}
+        >
+          <h1
+        className="font-semibold leading-tight"
+        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+          >
+        RUBY
+          </h1>
+          <h1
+        className="font-semibold leading-tight"
+        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+          >
+        LIU
+          </h1>
         </div>
 
+        {/* reflected overlay that scales the same way (mirrored and faded) */}
         <div
-          className="absolute right-50 top-3/4 -translate-y-1/2 max-w-xs p-4 backdrop-blur-xs filter blur-xs"
-          style={{ transform: 'scaleY(-1) scaleX(-1)' }}
+          aria-hidden="true"
+          className="absolute pointer-events-none"
+          style={{
+            right: "10%",
+            top: "70%",
+            transform: "translateY(-50%) scaleY(-1) scaleX(-1)",
+            maxWidth: "30%",
+            opacity: 0.45,
+            filter: "blur(5px)",
+          }}
         >
-          <h1 className="text-8xl font-semibold leading-tight">RUBY</h1>
-          <h1 className="text-8xl font-semibold leading-tight">LIU</h1>
+          <h1
+        className="font-semibold leading-tight"
+        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+          >
+        RUBY
+          </h1>
+          <h1
+        className="font-semibold leading-tight"
+        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+          >
+        LIU
+          </h1>
         </div>
       </div>
 
-      {/* three evenly divided boxes underneath the image/title */}
-      <div className="w-[97vw] max-w-[97vw] mt-8 grid grid-cols-3 gap-4">
+      {/* three boxes: stacked on mobile, three columns on md+ */}
+      <div className="w-[97vw] max-w-[97vw] grid grid-cols-1 md:grid-cols-3 gap-4 min-h-[50vh] md:min-h-[70vh] mt-0 md:mt-8">
         {/* left: text box -> About (art-about) */}
         <div
           role="button"
@@ -67,10 +105,10 @@ export default function Home() {
           className="flex items-center justify-center p-6 transform transition-transform duration-200 ease-out hover:scale-105 cursor-pointer"
         >
           <div>
-            <h3 className="inline-block border border-[#C3B1A4] text-[#C3B1A4] rounded-full px-4 py-1 text-2xl font-semibold hover:bg-[#C3B1A4] hover:text-[#2C2C2C]">About</h3>
-            <p className="mt-2 text-lg max-w-xs text-slate-300">
-              Ruby Liu is an emerging artist who works in resin, mono printing and charcoal. Using expressive mark-making and layered resin textures, she captures the movement and depth of human feeling. Aiming to translate inner experiences into a visual language of gesture and texture.
-            </p>
+        <h3 className="inline-block border border-[#C3B1A4] text-[#C3B1A4] rounded-full px-4 py-1 text-2xl font-semibold hover:bg-[#C3B1A4] hover:text-[#2C2C2C]">About</h3>
+        <p className="mt-2 text-sm md:text-lg max-w-xs text-slate-300">
+          Ruby Liu is an emerging artist who works in resin, mono printing and charcoal. Often using expressive mark-making and layered resin textures. Her work aims to translate inner experiences into a visual language of gesture and texture.
+        </p>
           </div>
         </div>
 
@@ -80,11 +118,18 @@ export default function Home() {
           tabIndex={0}
           onClick={() => router.push("/art-gallery")}
           onKeyDown={(e) => handleKeyNav(e, "/art-gallery")}
-          className="relative rounded-xl overflow-hidden transform transition-transform duration-200 ease-out hover:scale-105 cursor-pointer"
+          className="relative rounded-xl overflow-hidden transform transition-transform duration-200 ease-out hover:scale-105 cursor-pointer min-h-[160px] md:min-h-0"
         >
+          {/* desktop / landscape background */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/main-print.png')" }}
+            className="absolute inset-0 bg-cover bg-center hidden md:block"
+            style={{ backgroundImage: "url('/main-prin.png')" }}
+            aria-hidden="true"
+          />
+          {/* mobile / vertically stacked background (shown on small screens) */}
+          <div
+            className="absolute inset-0 bg-cover bg-center block md:hidden"
+            style={{ backgroundImage: "url('/hands.jpeg')" }}
             aria-hidden="true"
           />
           <div className="relative h-full p-6 flex items-start bg-black/30">
@@ -98,15 +143,15 @@ export default function Home() {
           tabIndex={0}
           onClick={() => router.push("/art-contact")}
           onKeyDown={(e) => handleKeyNav(e, "/art-contact")}
-          className="relative h-160 rounded-xl overflow-hidden transform transition-transform duration-200 ease-out hover:scale-105 cursor-pointer"
+          className="relative rounded-xl overflow-hidden transform transition-transform duration-200 ease-out hover:scale-105 cursor-pointer min-h-[160px] md:min-h-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/drawing.JPG')" }}
-            aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/drawing.JPG')" }}
+        aria-hidden="true"
           />
           <div className="relative h-full p-6 flex items-start bg-black/30">
-            <h3 className="inline-block text-[#2C2C2C] px-4 py-1 rounded-full text-xl font-semibold border border-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#C3B1A4]">Contact</h3>
+        <h3 className="inline-block text-[#2C2C2C] px-4 py-1 rounded-full text-xl font-semibold border border-[#2C2C2C] hover:bg-[#2C2C2C] hover:text-[#C3B1A4]">Contact</h3>
           </div>
         </div>
       </div>
